@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="format-detection" content="email=no"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <!--meta http-equiv="Content-Security-Policy" content="img-src 'self' data: http: https: *.gtimg.cn *.qq.com *.qlogo.cn *.qpic.cn *.myqcloud.com cdn-go.cn; script-src 'self' *.qq.com *.idqqimg.com cdn-go.cn 'unsafe-inline' 'unsafe-eval' blob:;"/-->
+        <link rel="icon" href="https://camp.qq.com/favicon.ico"/>
+        <style>
+            body {
+                margin: 0;
+                padding: 0
+            }
+        </style>
+        <title>王者营地</title>
+        <link href="https://image.ttwz.qq.com/wzry/static/css/vendors~index.40e8c2aa.chunk.css" rel="stylesheet">
+        <link href="https://image.ttwz.qq.com/wzry/static/css/index.40e8c2aa.css" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <div class="page-box">
+                <div class="buttom-panel">
+                    <button class="camp-button camp-button--strong camp-button--xxl">点击下载王者营地</button>
+                    <button class="camp-button camp-button--weak camp-button--xxl">已安装 点击打开</button>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $("button.camp-button--strong").click(function() {
+                window.location.href ="https://camp.qq.com/apks/TTWZ_android_4008_20001.apk";
+            });
+            $("button.camp-button--weak").click(function() {
+                // alert(window.location.pathname);
+                // alert(window.location.search);
+                var ua = navigator.userAgent;
+                var isWeixin = ua.toLowerCase().indexOf("micromessenger") !== -1; // 微信内
+                var isAndroid = ua.toLowerCase().indexOf("android") !== -1; // android终端
+
+                if (isWeixin) {
+                    alert("请在浏览器上打开");
+                } else {
+                    if (isAndroid) {
+                        // 安卓app的scheme协议
+                        window.location.href = "smobagamehelper://game_library" + window.location.search;
+                        setTimeout(function() {
+                            let hidden = window.document.hidden || window.document.mozHidden || window.document.msHidden ||window.document.webkitHidden;
+                            if (typeof hidden == "undefined" || hidden == false) {
+                                window.location.href = "https://camp.qq.com/apks/TTWZ_android_4008_20001.apk";
+                            }
+                        }, 3000);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
