@@ -44,7 +44,7 @@
                 } else {
                     if (isAndroid) {
                         // 安卓app的scheme协议
-                        window.location.href = "smobagamehelper://game_library" + window.location.search;
+                        window.location.href = "smobagamehelper://game_detail" + window.location.search;
                         setTimeout(function() {
                             let hidden = window.document.hidden || window.document.mozHidden || window.document.msHidden ||window.document.webkitHidden;
                             if (typeof hidden == "undefined" || hidden == false) {
